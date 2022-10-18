@@ -1,18 +1,19 @@
 pipeline {
-    agent any
+    agent NODE1
     stages {
-        stage('test') {
-            steps {
-                sh 'echo hello'
+        stage('reddy') { 
+            steps {sh 'mvn package'
+
+
             }
         }
-        stage('learning') {
-            agent { label 'OPENJDK-11-MAVEN' }
+        stage ('git') { 
             steps {
-                git url: 'https://github.com/GitPracticeRepo/game-of-life.git', 
-                    branch: 'master'
+                git credentialsId: 'UBUNTU', url: 'https://github.com/saiprakashreddivari/game-of-life.git',
+                 
+         
+       
             }
         }
     }
 }
-
