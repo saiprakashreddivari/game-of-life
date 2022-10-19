@@ -1,18 +1,16 @@
 pipeline {
-    agent NODE1
+    agent any
     stages {
-        stage('reddy') { 
-            steps {sh 'mvn package'
-
-
+        stage('test') {
+            steps {
+                sh 'echo hello'
             }
         }
-        stage ('git') { 
+        stage('learning') {
+            agent { label 'ubuntu node-1' }
             steps {
-                git credentialsId: 'UBUNTU', url: 'https://github.com/saiprakashreddivari/game-of-life.git',
-                 
-         
-       
+                git url: 'https://github.com/saiprakashreddivari/game-of-life.git',
+                    branch: 'master'
             }
         }
     }
