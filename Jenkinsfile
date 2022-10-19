@@ -7,7 +7,7 @@ pipeline {
             }
         }
         stage('learning') {
-            agent { label 'ubuntu node-1' }
+            agent { label 'NODE 1' }
             steps {
                 git url: 'https://github.com/saiprakashreddivari/game-of-life.git',
                     branch: 'master'
